@@ -14,11 +14,11 @@
 
 
 /*
-    Josh Comeau's CSS reset
-    https://www.joshwcomeau.com/css/custom-css-reset/
+Josh Comeau's CSS reset
+https://www.joshwcomeau.com/css/custom-css-reset/
 */
 /*
-  1. Use a more-intuitive box-sizing model.
+1. Use a more-intuitive box-sizing model.
 */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -84,24 +84,23 @@ body {
     padding: 5.5rem 1.5rem;
 }
 
-main {
+.card-container {
     border-radius: 0.5rem;
     overflow: hidden;
 }
 
 @media (min-width: 700px) {
-    main {
+    .card-container {
         max-width: 900px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
     }
+
+    .button {
+        margin-top: 3rem;
+    }
 }
 
-/* 
-    I think because of the sizing spacing differences
-    between the mobile and desktop layouts, I should
-    probably switch the card to display: flex;
-*/
 .card {
     padding: 3rem;
     display: grid;
@@ -109,12 +108,12 @@ main {
 }
 
 /*
-    I'm proud of my solution for this problem:
-    each card with a unique color sets its own
-    value for the --card-color custom property,
-    meaning when a button is inside a card, the 
-    text color of the button can be inherited from
-    its appropriate card's --card-color
+I'm proud of my solution for this problem:
+each card with a unique color sets its own
+value for the --card-color custom property,
+meaning when a button is inside a card, the 
+text color of the button can be inherited from
+its appropriate card's --card-color
 */
 .card-style-1 {
     --card-color:var(--clr-bright-orange); 
@@ -155,8 +154,18 @@ main {
     border-radius: 1.5rem;
 }
 
+.button:is(:hover, :focus) {
+    color: var(--clr-light-gray);
+    background-color: var(--card-color);
+    /* 
+    Not sure if this is the best solution to fix the 
+    layout shift that would occur using border: 2px; 
+    */
+    box-shadow: inset 0 0 0 2px var(--clr-light-gray);
+}
+
 .attribution {
-    font-size: 11px; 
+    font-size: 0.75rem; 
     color: var(--clr-very-dark-cyan);
     text-align: center;
 }
