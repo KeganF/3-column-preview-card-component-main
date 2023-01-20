@@ -32,8 +32,15 @@
 /*
 3. Allow percentage-based heights in the application
 */
+/*
+Maybe this is something I should overwrite in my own
+styles outside of the reset card, but I changed this
+from height: 100%; to min-height: 100vh; as the original
+causes me clipping issues when the viewport is shorter than
+the content.
+*/
 html, body {
-    height: 100%;
+    min-height: 100vh;
 }
 /*
 Typographic tweaks!
@@ -64,14 +71,17 @@ p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
 }
 
-/* Styling */
+/* My Styling */
 body {
     font-family: var(--ff-regular);
     font-weight: var(--fw-regular);
     font-size: 0.9375rem; /* 15px to rem */
     color: var(--clr-trans-white);
     background-color: var(--clr-light-gray);
-    margin: 5rem 1rem;
+    
+    display: grid;
+    place-content: center;
+    padding: 5.5rem 1.5rem;
 }
 
 main {
@@ -80,11 +90,6 @@ main {
 }
 
 @media (min-width: 700px) {
-    body {
-        margin: 1rem;
-        display: grid;
-        place-content: center;
-    }
     main {
         max-width: 900px;
         display: grid;
@@ -92,38 +97,43 @@ main {
     }
 }
 
-.section {
+/* 
+    I think because of the sizing spacing differences
+    between the mobile and desktop layouts, I should
+    probably switch the card to display: flex;
+*/
+.card {
     padding: 3rem;
     display: grid;
-    gap: 1.5rem;
+    gap: 1.55rem;
 }
 
 /*
     I'm proud of my solution for this problem:
-    each section with a unique color sets its own
-    value for the --section-color custom property,
-    meaning when a button is inside a section, the 
+    each card with a unique color sets its own
+    value for the --card-color custom property,
+    meaning when a button is inside a card, the 
     text color of the button can be inherited from
-    its appropriate section's --section-color
+    its appropriate card's --card-color
 */
-.section-style-1 {
-    --section-color:var(--clr-bright-orange); 
+.card-style-1 {
+    --card-color:var(--clr-bright-orange); 
     background-color: var(--clr-bright-orange);
 }
-.section-style-2 {
-    --section-color:var(--clr-dark-cyan); 
+.card-style-2 {
+    --card-color:var(--clr-dark-cyan); 
     background-color: var(--clr-dark-cyan);
 }
-.section-style-3 {
-    --section-color:var(--clr-very-dark-cyan); 
+.card-style-3 {
+    --card-color:var(--clr-very-dark-cyan); 
     background-color: var(--clr-very-dark-cyan);
 }
 
-.section__icon {
-    max-width: 5rem;
+.card__icon {
+    max-width: 4rem;
 }
 
-.section__title {
+.card__title {
     font-family: var(--ff-accent);
     font-weight: var(--fw-bold);
     font-size: 2.5rem;
@@ -131,14 +141,26 @@ main {
     text-transform: uppercase;
 }
 
+.card p {
+    line-height: 1.55rem;
+}
+
 .button {
-    color: var(--section-color);
+    text-decoration: none;
+    color: var(--card-color);
+    background-color: var(--clr-light-gray);
     width: max-content;
-    padding: 0.75em 1.75em;
+    padding: 0.8rem 2rem;
     border: 0;
     border-radius: 1.5rem;
 }
 
 .attribution {
+    font-size: 11px; 
     color: var(--clr-very-dark-cyan);
+    text-align: center;
+}
+
+.attribution a { 
+    color: hsl(228, 45%, 44%); 
 }
