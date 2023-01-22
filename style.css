@@ -89,7 +89,7 @@ body {
     overflow: hidden;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 750px) {
     .card-container {
         max-width: 900px;
         display: grid;
@@ -97,39 +97,41 @@ body {
     }
 
     .button {
-        margin-top: 3rem;
+        margin-top: 4rem;
     }
 }
 
 .card {
     padding: 3rem;
     display: grid;
-    gap: 1.55rem;
+    gap: 1.5rem;
 }
 
 /*
-I'm proud of my solution for this problem:
-each card with a unique color sets its own
-value for the --card-color custom property,
-meaning when a button is inside a card, the 
-text color of the button can be inherited from
-its appropriate card's --card-color
+I made an interesting solution for this 
+problem: each card with a unique color sets 
+its own value for the --card-color custom 
+property, meaning when a button is inside a 
+card, the text color of the button can be 
+inherited from its appropriate card's 
+--card-color
 */
-.card-style-1 {
+.accent-style-1 {
     --card-color:var(--clr-bright-orange); 
     background-color: var(--clr-bright-orange);
 }
-.card-style-2 {
+.accent-style-2 {
     --card-color:var(--clr-dark-cyan); 
     background-color: var(--clr-dark-cyan);
 }
-.card-style-3 {
+.accent-style-3 {
     --card-color:var(--clr-very-dark-cyan); 
     background-color: var(--clr-very-dark-cyan);
 }
 
 .card__icon {
     max-width: 4rem;
+    margin-bottom: 0.775rem;
 }
 
 .card__title {
@@ -140,8 +142,8 @@ its appropriate card's --card-color
     text-transform: uppercase;
 }
 
-.card p {
-    line-height: 1.55rem;
+.card > p {
+    line-height: 1.525rem;
 }
 
 .button {
@@ -149,23 +151,18 @@ its appropriate card's --card-color
     color: var(--card-color);
     background-color: var(--clr-light-gray);
     width: max-content;
-    padding: 0.8rem 2rem;
-    border: 0;
+    padding: 0.8rem 1.875rem;
     border-radius: 1.5rem;
 }
 
 .button:is(:hover, :focus) {
     color: var(--clr-light-gray);
     background-color: var(--card-color);
-    /* 
-    Not sure if this is the best solution to fix the 
-    layout shift that would occur using border: 2px; 
-    */
     box-shadow: inset 0 0 0 2px var(--clr-light-gray);
 }
 
 .attribution {
-    font-size: 0.75rem; 
+    font-size: 0.65rem; 
     color: var(--clr-very-dark-cyan);
     text-align: center;
 }
