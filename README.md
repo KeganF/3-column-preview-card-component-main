@@ -23,7 +23,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./3-column-preview-card-component-finished.png);
+![](./3-column-preview-card-component-finished.png)
 
 ## My process
 
